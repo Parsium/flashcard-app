@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#page-container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+#card {
+  height: 250px;
+  max-width: 500px;
+  box-sizing: border-box;
+  padding: 0 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 2em;
+}
+
+.control-group {
+  margin-top: 50px;
+}
+
+label {
+  display: block;
+}
+
+input, button {
+  box-sizing: border-box;
+  height: 2em;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* Conditional rendering */
+.question, .answer {
+  cursor: pointer;
+}
+.question {
+  background-color: lightblue;
+}
+.answer {
+  background-color: lightgrey;
+}
+.correct {
+  background-color: lightgreen;
+}
+.incorrect {
+  background-color: lightcoral;
+}
