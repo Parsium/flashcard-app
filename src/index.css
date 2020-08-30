@@ -53,13 +53,13 @@ input, button {
 }
 
 /* Conditional rendering */
-.question, .answer {
+.question, .hint {
   cursor: pointer;
 }
 .question {
   background-color: lightblue;
 }
-.answer {
+.hint {
   background-color: lightgrey;
 }
 .correct {

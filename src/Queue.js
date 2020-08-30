@@ -22,3 +22,4 @@ class Queue {
         return output;
     }
 }
+export default Queue;
