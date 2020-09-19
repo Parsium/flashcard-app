@@ -22,4 +22,4 @@ This project has allowed me to practice some more with:
 - Keeping all React components independent
 - How to read and load data from local files
 
-The app has room further for possible improvements, such as functionality to create and edit decks within the app instead of relying on external json files.
+The app has room for further possible improvements, such as functionality to create and edit decks within the app instead of relying on external json files.
