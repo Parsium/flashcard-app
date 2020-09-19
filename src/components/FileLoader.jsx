@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const FileLoader = ({setDeckData}) => {
     let reader;
-    const [file, setFile] = useState(undefined);
     const [message, setMessage] = useState("");
 
     // Handler called once file has been successfully read
@@ -25,7 +24,7 @@ const FileLoader = ({setDeckData}) => {
             setMessage("ERROR - Found a question has been incorrectly formatted. Correct and try again.");
             return;
         }
-        
+
         console.log("File read successfully.");
         setDeckData(content);
     };
