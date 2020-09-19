@@ -1,14 +1,14 @@
 import React from "react";
 
-const CardPreview = ({id, message, status, onClick}) => {
-    let styleClasses = status + " " + "noselect";
+const CardPreview = ({message, colour, showCursor, onClick}) => {
+    let cursorClass = showCursor ? "show-cursor" : "hide-cursor";
+    let styleClasses = colour + " " + cursorClass + " " + "noselect";
     return (
-        <>
-            <div className="pagination">{ id }</div>
+        <div id="card-preview-wrapper">
             <div role="card" id="card" className={styleClasses} onClick={onClick}>
                 { message }
             </div>
-        </>
+        </div>
     );
 };
 export default CardPreview;

@@ -1,3 +1,4 @@
+/* Universal elements */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,9 +13,67 @@ code {
     monospace;
 }
 
-#page-container {
-  width: 80vw;
+
+label {
+  display: block;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: lightgray;
+  border: lightgrey 1px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  transition-duration: 0.4s;
+}
+
+input {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: black solid 1px;
+  font-size: 1rem;
+  
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.large-button {
+  background-color: #3a4ef1;
+  border: #3a4ef1 solid 2px;
+  color: white;
+  width: 50%;
+  padding: 10px 20px;
+  font-weight: 500px;
+  font-size: 18px;
+  transition-duration: 0.4s;
+}
+
+.large-button:hover {
+  background-color: white;
+  color: black;
+}
+
+#app {
+  text-align: center;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+#header {
+  height: 2rem;
+  background: -webkit-linear-gradient(to left,#32dfce,#6f54f8);
+  background: linear-gradient(to left,#32dfce,#6f54f8); 
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: white;
+  vertical-align: middle;
+  padding: 1rem 0;
 }
 
 #card {
@@ -23,23 +82,20 @@ code {
   box-sizing: border-box;
   padding: 0 50px;
   display: flex;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   font-size: 2em;
 }
 
+#deck-preview-wrapper {
+  margin: 100px 0;
+  border-top: 1px solid black;
+}
+
 .control-group {
   margin-top: 50px;
-}
-
-label {
-  display: block;
-}
-
-input, button {
-  box-sizing: border-box;
-  height: 2em;
 }
 
 .noselect {
@@ -53,18 +109,18 @@ input, button {
 }
 
 /* Conditional rendering */
-.question, .hint {
+.show-cursor {
   cursor: pointer;
 }
-.question {
+.blue {
   background-color: lightblue;
 }
-.hint {
+.grey {
   background-color: lightgrey;
 }
-.correct {
+.green {
   background-color: lightgreen;
 }
-.incorrect {
+.red {
   background-color: lightcoral;
 }
