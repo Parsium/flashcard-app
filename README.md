@@ -15,7 +15,7 @@ A deck is written and represented as a JSON file, which can be then be imported 
 
 *Note - check your deck is written as an array, else you will encounter errors being thrown!*
 
-# Project takeaways
+# What I've learnt
 This project has allowed me to practice some more with:
 - Conceiving and writing *good* unit tests (by watching out for ugly code practices)
 - UI state management - keeping it simple but organised
