@@ -15,11 +15,11 @@ A deck is written and represented as a JSON file, which can be then be imported 
 
 *Note - check your deck is written as an array, else you will encounter errors being thrown!*
 
-# Project takeaways
+# What I've learnt
 This project has allowed me to practice some more with:
 - Conceiving and writing *good* unit tests (by watching out for ugly code practices)
 - UI state management - keeping it simple but organised
 - Keeping all React components independent
 - How to read and load data from local files
 
-The app has room further for possible improvements, such as functionality to create and edit decks within the app instead of relying on external json files.
+The app has room for further possible improvements, such as functionality to create and edit decks within the app instead of relying on external json files.
