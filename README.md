@@ -6,7 +6,6 @@ A deck is written and represented as a JSON file, which can be then be imported 
 ```json
 [
     {
-        "id": 99,
         "question": "What is the name of the little dragon in the animated movie Mulan?",
         "answer": "mushu"
     }
