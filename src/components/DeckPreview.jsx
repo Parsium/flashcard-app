@@ -37,7 +37,7 @@ const DeckPreview = ({deck}) => {
 
         return (
             <div id="deck-preview">
-                <span id="card-pagination">Question {card.id+1} out of {deck.length}</span>
+                <span id="card-pagination">Question {cardIndex+1} out of {deck.length}</span>
                 <CardPreview
                     message={message}
                     colour={colour}

@@ -94,6 +94,21 @@ button:hover {
   border-top: 1px solid black;
 }
 
+#results-table {
+  margin: 0 auto;
+}
+
+#results-table th {
+  font-size: 1.5rem;
+}
+
+#results-table td {
+  padding: 50px;
+  border-radius: 4px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
 .control-group {
   margin-top: 50px;
 }
@@ -107,6 +122,48 @@ button:hover {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width:120px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 4px;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  position: absolute;
+  z-index: 1;
+  top: 103%;
+  left: 50%;
+  margin-left: -60px;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::before {
+  content: "";
+  position:absolute;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid grey;
+  top: -5px;
+  left: 55px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 /* Conditional rendering */
 .show-cursor {
@@ -123,4 +180,7 @@ button:hover {
 }
 .red {
   background-color: lightcoral;
+}
+.orange {
+  background-color: lightsalmon;
 }

@@ -4,14 +4,14 @@ const FileLoader = ({setDeckData}) => {
     let reader;
     const [message, setMessage] = useState("");
 
-    // Handler called once file has been successfully read
+    /* Handler called once file has been successfully read */
     const handleFileRead = (e) => {
         const content = JSON.parse(reader.result);
         console.log("Checking for errors...");
 
-        // Check deck data is in an array
-        if (!Array.isArray(content)) {
-            setMessage("ERROR - File data is not in the correct format");
+        // Check deck data is in an array and non-empty
+        if (!Array.isArray(content) || (Object.keys(content).length == 0)) {
+            setMessage("ERROR - JSON data is not in the correct format");
             return;
         } 
 
@@ -29,7 +29,7 @@ const FileLoader = ({setDeckData}) => {
         setDeckData(content);
     };
 
-    // Handler to load in file to memory
+    /* Handler to load in file to memory */
     const handleFileChosen = (file) => {
         var type = /application\/json/;
         reader = new FileReader();
@@ -38,6 +38,7 @@ const FileLoader = ({setDeckData}) => {
             console.log("Loading file...");
             reader.onloadend = handleFileRead;
             reader.readAsText(file);
+            setMessage("");
         } else {
             setMessage("ERROR - File type not supported");
         }
@@ -50,9 +51,10 @@ const FileLoader = ({setDeckData}) => {
                 type="file"
                 id="file"
                 name="file"
+                accept="application/json"
                 onChange={(e) => handleFileChosen(e.target.files[0])}    
             ></input>
-        <p>{ message }</p>
+        <p data-testid="fileloader-message-alert">{ message }</p>
         </form>
     );
 

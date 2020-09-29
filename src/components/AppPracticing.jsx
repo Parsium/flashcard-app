@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardPreview from "./CardPreview";
 import AnswerBox from "./AnswerBox";
+import sleep from "../sleep.js";
 
 const AppPracticing = ({deck}) => {
     const STATUSES = {
@@ -14,42 +15,46 @@ const AppPracticing = ({deck}) => {
     const [queue, setQueue] = useState( setupDeck(deck) );
     const [status, setStatus] = useState(STATUSES.question);
 
-    function setupDeck(deck) {
-        return deck.map(card => {
-            card.hintsTaken = 0;
+    function setupDeck(data) {
+        return data.map(card => {
             card.incorrectAnswers = 0;
+            card.hintsTaken = 0;
             return card;
         });
     }
 
-    function validateAnswer(text) {
+    async function validateAnswer(text) {
         var userAnswer = String(JSON.stringify(text.toLowerCase()).slice(1,-1));
         var realAnswer = queue[0].answer;
 
         if (realAnswer === userAnswer) {
             setStatus(STATUSES.correct);
         } else {
-            // increment incorrectAnswers property for card
-            setQueue(prevState => {
-                const updatedQueue = Object.assign([], prevState);
-                const card = updatedQueue[0];
-                card.incorrectAnswers = card.incorrectAnswers + 1;
-                return updatedQueue;
+            // increment incorrectAnswers for card
+            setQueue(oldQueue => { // Updates on rendering once status changes to `incorrect`
+                const newQueue = [...oldQueue];
+                var v = newQueue[0].incorrectAnswers + 1;
+                newQueue[0] = {...newQueue[0], incorrectAnswers: v};
+                return newQueue;
             });
             setStatus(STATUSES.incorrect);
+            await sleep(2000);
+            setStatus(STATUSES.question);
         }
     }
 
     function toggleHint() {
-        switch(status) {
-            case STATUSES.question: 
-                setStatus(STATUSES.hint);
-                break;
-            case STATUSES.hint:
-                setStatus(STATUSES.question);
-                break;
-            default:
-                break;
+        if (status === STATUSES.question) {
+            // increment hintsTaken for card
+            setQueue(oldQueue => {
+                const newQueue = [...oldQueue];
+                var v = newQueue[0].hintsTaken + 1;
+                newQueue[0] =  {...newQueue[0], hintsTaken: v};
+                return newQueue;
+            });
+            setStatus(STATUSES.hint);
+        } else if (status === STATUSES.hint) {
+            setStatus(STATUSES.question);
         }
     }
 
