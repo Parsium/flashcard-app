@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CardPreview from "./CardPreview";
 import AnswerBox from "./AnswerBox";
 import sleep from "../sleep.js";
 
-const AppPracticing = ({deck}) => {
+const AppPracticing = ({deck, finishPractice}) => {
     const STATUSES = {
         question: "question",
         hint: "hint",
         correct: "correct",
         incorrect: "incorrect",
-        finish: "finish"
     }; 
 
     const [queue, setQueue] = useState( setupDeck(deck) );
     const [status, setStatus] = useState(STATUSES.question);
+    const [results, setResults] = useState([]);
 
     function setupDeck(data) {
-        return data.map(card => {
+        const updatedDeck = JSON.parse(JSON.stringify(data)) // deep clone the deck since its array of objects, to prevent accidentially updating the parent's copy
+
+        return updatedDeck.map(card => {
             card.incorrectAnswers = 0;
             card.hintsTaken = 0;
             return card;
@@ -67,20 +69,19 @@ const AppPracticing = ({deck}) => {
     }
 
     function nextCard() {
+        // If all cards are answered, pass results to parent
         if (queue.length <= 1) {
-            setQueue([]);
-            setStatus(STATUSES.finish);
-            return;
+            finishPractice(results);
         }
 
+        let updatedResults = Object.assign([...results, queue[0]], results);
         let updatedQueue = Object.assign([], queue);
         setQueue(updatedQueue.slice(1));
+        setResults(updatedResults);
         setStatus(STATUSES.question);
     }
 
     let cardPreview = () => {
-        if (status == STATUSES.finish) return;
-
         let card = queue[0];
 
         var message = card.question;
@@ -117,7 +118,6 @@ const AppPracticing = ({deck}) => {
     };
 
     let answerBox = () => {
-        if (status == STATUSES.finish) return;
         if (status == STATUSES.correct) return;
         return (
             <AnswerBox
@@ -129,8 +129,6 @@ const AppPracticing = ({deck}) => {
     }
 
     let buttons = () => {
-        if (status == STATUSES.finish) return;
-
         if (status == STATUSES.correct || status == STATUSES.incorrect) {
             return <button className="control-group" type="submit" onClick={() => nextCard()}>Next card</button>
         }

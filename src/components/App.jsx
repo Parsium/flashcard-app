@@ -11,12 +11,24 @@ const App = () => {
     };
     const [state, setState] = useState(STATES.landing);
     const [deckData, setDeckData] = useState(undefined);
+    const [results, setResults] = useState([]);
+
+    function resetApp() {
+        setState(STATES.landing);
+        setDeckData(undefined);
+        setResults([]);
+    }
 
     function beginPractice() {
         if (deckData !== undefined) {
             setState(STATES.practicing);
         }
     } 
+
+    function finishPractice(results) {
+        setResults(results);
+        setState(STATES.results);
+    }
 
     let toRender = () => {
         switch (state) {
@@ -29,9 +41,15 @@ const App = () => {
                     ></AppLanding>
                 );
             case STATES.practicing:
-                return <AppPracticing deck={deckData}></AppPracticing>;
+                return <AppPracticing
+                            deck={deckData}
+                            finishPractice={(results) => finishPractice(results)}
+                        ></AppPracticing>;
             case STATES.results:
-                return <AppResults></AppResults>;
+                return <AppResults
+                            results={results}
+                            resetApp={() => resetApp()}
+                        ></AppResults>;
             default:
                 throw "App is in an illegal state!";
         }

@@ -20,5 +20,6 @@ This project has allowed me to practice some more with:
 - UI state management - keeping it simple but organised
 - Keeping all React components independent
 - How to read and load data from local files
+- Copying by reference in native Javscript - and difference between shallow and deep cloning for arrays.
 
 The app has room for further possible improvements, such as functionality to create and edit decks within the app instead of relying on external json files.
