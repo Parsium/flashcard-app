@@ -1,6 +1,17 @@
 React flashcard app allowing you to load a deck of questions and test your knowledge, similar to Quizlet and Anki. 
 
+# Essential requirements
+- Node.js (>v12.18)
+- Npm (>v6.14)
+- Create React App
+
 # How to use
+Make sure you have Node.js (v12.18 or above), npm (v6.14 or above) and the latest version of Create React App.
+1. Run ```npm install``` in the app directory to install all necessary packages.
+2. Run ```npm start``` to run the app
+3. Visit http://localhost:8081/ in browser and enjoy :)
+
+# Loading question decks
 A deck is written and represented as a JSON file, which can be then be imported into the app on launch. Decks must follow a specific schema to be read correctly - the following example is a deck containing one question, in the correct structure:
 
 ```json
