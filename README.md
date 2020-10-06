@@ -18,7 +18,7 @@ A deck is written and represented as a JSON file, which can be then be imported 
 ]
 ```
 
-*Note - check your deck is written as an array, else you will encounter errors being thrown!*
+*Note - check your deck is written as an array, else you will encounter errors being flagged by the app!*
 
 # What I've learnt
 This project has allowed me to practice some more with:
