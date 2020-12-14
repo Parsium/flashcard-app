@@ -15,17 +15,20 @@ const FileLoader = ({setDeckData}) => {
             return;
         } 
 
-        // Check if all questions are objects with the necessary fields
-        const checkQuestionProps = (errorFound, item) => {
-            return (errorFound || (item.hasOwnProperty("id") && item.hasOwnProperty("question") && item.hasOwnProperty("answer"))); 
-        };
-        var error = !(true || content.reduce(checkQuestionProps, false));
-        if (error) {
-            setMessage("ERROR - Found a question has been incorrectly formatted. Correct and try again.");
+        // Check if all items are objects with the necessary `question` and `answer` fields
+        const checkItemProps = (content) => content.find(item => {
+            return !(item.hasOwnProperty("question") && item.hasOwnProperty("answer"));
+        });
+        if (checkItemProps(content) != undefined) {
+            setMessage("ERROR - Please ensure all questions have a `question` and `item` field and try again.");
             return;
         }
-
-        console.log("File read successfully.");
+        
+        // Set answers to all lowercase
+        content.forEach(item => {
+            item.answer = String(JSON.stringify(item.answer.toLowerCase()).slice(1,-1));
+        });
+        
         setDeckData(content);
     };
 

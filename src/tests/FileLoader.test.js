@@ -17,10 +17,3 @@ describe("FileLoader", () => {
     });
 });
 
-// file successfully loads json file
-// throws error if not json
-// accepts json file correctly formatted
-// reject json deck containing one erroneous question
-// reject json deck if not an array
-// reject empty deck
-// reject deck not containing an object
